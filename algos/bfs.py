@@ -1,6 +1,5 @@
 from collections import deque
 from models.track import Track
-from models.node import Node
 from models.terrain import TerrainType
 from helpers.valid_square import is_valid_square
 

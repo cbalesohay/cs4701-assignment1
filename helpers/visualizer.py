@@ -1,8 +1,6 @@
 import matplotlib.pyplot as plt
-import matplotlib.colors as mcolors
 import numpy as np
 from models.track import Track
-from models.node import Node
 
 def visualize(grid, track: Track):
     fig, ax = plt.subplots(figsize=(8, 8))
