@@ -12,10 +12,10 @@ def load_map(filepath):
             
             for c, ch in enumerate(line.strip()):
                 if ch == 'S':
-                    start = Node((r, c), 0)
+                    start = Node((r, c))
                     cell = Cell(r, c, 'S')
                 elif ch == 'E':
-                    end = Node((r, c), 0)
+                    end = Node((r, c))
                     cell = Cell(r, c, 'E')
                 else:
                     cell = Cell(r, c, ch)

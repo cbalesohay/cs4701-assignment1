@@ -11,3 +11,8 @@ class Node:
         new_child = Node(position, path_value + self.total_value, self)
         self.children.append(new_child)
         return new_child
+    
+    def add_child_heuristic(self, heuristic: int, position: Tuple[int, int]) -> Node:
+        new_child = Node(position, heuristic, self)
+        self.children.append(new_child)
+        return new_child

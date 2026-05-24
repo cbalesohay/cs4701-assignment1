@@ -3,6 +3,7 @@ from models.terrain import TerrainType
 from helpers.valid_square import is_valid_square
 
 def ucs(grid, track: Track) -> Track:
+    # Implement Uniform Cost Search algorithm
     if track.start.position == track.end.position:
         return track
 
@@ -23,8 +24,13 @@ def ucs(grid, track: Track) -> Track:
         for dx, dy in directions:
             next_x = current_node.position[0] + dx
             next_y = current_node.position[1] + dy
+            
+            if not is_valid_square(grid, next_x, next_y):
+                continue
+            
+            if (next_x, next_y) in track.closed_list:
+                continue
 
-            if is_valid_square(grid, next_x, next_y) and (next_x, next_y) not in track.closed_list:
-                child_node = current_node.add_child(TerrainType[grid[next_x][next_y].char].value, (next_x, next_y))
-                track.closed_list[(next_x, next_y)] = child_node
-                track.add_open_sorted(child_node)
+            child_node = current_node.add_child(TerrainType[grid[next_x][next_y].char].value, (next_x, next_y))
+            track.closed_list[(next_x, next_y)] = child_node
+            track.add_open_sorted(child_node)
